@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Table CRUD</title>
+</head>
+<body>
+    <h1>JSON Table with CRUD Operations</h1>
+    
+    <!-- Table to display data -->
+    <table id="dataTable" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be added here dynamically -->
+        </tbody>
+    </table>
+    
+    <!-- Form to add/edit data -->
+    <h2>Add New Record</h2>
+    <label for="id">ID:</label>
+    <input type="text" id="id" placeholder="Enter ID">
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter Name">
+    <label for="age">Age:</label>
+    <input type="number" id="age" placeholder="Enter Age">
+    <button onclick="addOrUpdateRecord()">Add/Update</button>
+
+    <!-- JavaScript section -->
+    <script>
+        // Initial JSON object with sample data
+        let data = [
+            { id: 1, name: "Alice", age: 25 },
+            { id: 2, name: "Bob", age: 30 },
+        ];
+
+        // Function to render the data table
+        function renderTable() {
+            const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = ""; // Clear the table body
+            
+            data.forEach((item, index) => {
+                const row = tableBody.insertRow(); // Insert a new row
+                row.insertCell(0).innerText = item.id;
+                row.insertCell(1).innerText = item.name;
+                row.insertCell(2).innerText = item.age;
+
+                // Action buttons for edit and delete
+                const actionsCell = row.insertCell(3);
+                actionsCell.innerHTML = `
+                    <button onclick="editRecord(${index})">Edit</button>
+                    <button onclick="deleteRecord(${index})">Delete</button>
+                `;
+            });
+        }
+
+        // Function to add or update a record
+        function addOrUpdateRecord() {
+            const id = document.getElementById("id").value;
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+
+            if (!id || !name || !age) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            const index = data.findIndex(item => item.id == id);
+
+            if (index === -1) {
+                // If the ID doesn't exist, add a new record
+                data.push({ id: parseInt(id), name, age: parseInt(age) });
+            } else {
+                // If ID exists, update the existing record
+                data[index] = { id: parseInt(id), name, age: parseInt(age) };
+            }
+
+            renderTable(); // Refresh the table
+            clearForm(); // Clear the input form
+        }
+
+        // Function to edit a record
+        function editRecord(index) {
+            const record = data[index];
+            document.getElementById("id").value = record.id;
+            document.getElementById("name").value = record.name;
+            document.getElementById("age").value = record.age;
+        }
+
+        // Function to delete a record
+        function deleteRecord(index) {
+            data.splice(index, 1); // Remove the item from the array
+            renderTable(); // Refresh the table
+        }
+
+        // Function to clear the form inputs
+        function clearForm() {
+            document.getElementById("id").value = '';
+            document.getElementById("name").value = '';
+            document.getElementById("age").value = '';
+        }
+
+        // Initial rendering of the table
+        renderTable();
+    </script>
+</body>
+</html>
