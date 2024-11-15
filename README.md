@@ -14,13 +14,16 @@ HTML5: For creating the structure of the webpage.
 JavaScript (optional): For adding interactivity,validations.
 
 Output for date file:
-![image](https://github.com/user-attachments/assets/e19dc044-3f80-4c59-8259-8179cacd522e)
+![calender](https://github.com/user-attachments/assets/4d1266dd-7ad8-4e69-9f41-5e04fcf9f445)
+
 
 Output for table file:
-![image](https://github.com/user-attachments/assets/d1da0f44-3082-410e-a2d0-9f550cc3877a)
+![table](https://github.com/user-attachments/assets/dee45c24-e5f9-46b2-8ec6-9edeb2fa0669)
+
 
 Output for form file:
-![image](https://github.com/user-attachments/assets/670620ee-057a-4362-aa03-725b1e671794)
+![form](https://github.com/user-attachments/assets/279aaf44-2fe6-47ca-b4e3-407da15967c9)
+
 
 
 
