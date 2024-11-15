@@ -14,6 +14,7 @@ HTML5: For creating the structure of the webpage.
 JavaScript (optional): For adding interactivity,validations.
 
 Output for date file:
+
 ![calender](https://github.com/user-attachments/assets/4d1266dd-7ad8-4e69-9f41-5e04fcf9f445)
 
 
